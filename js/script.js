@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
 
     /* ==========================================================================
-       5. PEMUTAR MUSIK "DIA DIA DIA" & EQUALIZER (AUTOPLAY BROWSER FIXED)
+       5. PEMUTAR MUSIK "DIA DIA DIA" (PATH FOLDER UTAMA)
        ========================================================================== */
     const musicBtn = document.getElementById('musicToggle');
     const musicIcon = document.getElementById('musicIcon');
@@ -94,13 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const equalizer = document.getElementById('equalizer');
     let isPlaying = false;
 
-    // Preload file audio di memori
     if (bgMusic) {
-        bgMusic.load();
+        bgMusic.load(); // Paksa browser memuat berkas dia-dia-dia.mp3 dari folder utama
     }
 
-    // Pemicu Pemutaran Musik Otomatis pada Sentuhan Pertama Pengguna
-    const playOnFirstInteraction = () => {
+    // Solusi Autoplay Browser: Putar lagu saat pengguna pertama kali menyentuh/mengklik layar
+    const playMusicFirstTouch = () => {
         if (bgMusic && bgMusic.paused && !isPlaying) {
             bgMusic.play().then(() => {
                 isPlaying = true;
@@ -108,17 +107,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (equalizer) equalizer.classList.remove('paused');
                 showToast("🎵 Dia Dia Dia - Fatin Shidqia");
             }).catch((err) => {
-                console.log("Menunggu aksi manual dari tombol:", err);
+                console.log("Browser memblokir autoplay, menunggu sentuhan tombol manual:", err);
             });
         }
-        window.removeEventListener('click', playOnFirstInteraction);
-        window.removeEventListener('touchstart', playOnFirstInteraction);
     };
 
-    window.addEventListener('click', playOnFirstInteraction, { once: true });
-    window.addEventListener('touchstart', playOnFirstInteraction, { once: true });
+    window.addEventListener('click', playMusicFirstTouch, { once: true });
+    window.addEventListener('touchstart', playMusicFirstTouch, { once: true });
 
-    // Tombol Manual Toggle Musik
+    // Tombol Manual Toggle Play/Pause Musik
     if (musicBtn && bgMusic) {
         musicBtn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -136,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     showToast("🎵 Dia Dia Dia - Fatin Shidqia");
                     isPlaying = true;
                 }).catch((err) => {
-                    alert("Gagal memutar lagu! Pastikan file 'dia-dia-dia.mp3' ada di dalam folder 'audio'.");
+                    alert("Gagal memutar audio! Pastikan berkas 'dia-dia-dia.mp3' berada di folder utama (sejajar dengan index.html) dan ukurannya tidak 0 KB.");
                 });
             }
         });
