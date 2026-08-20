@@ -9,7 +9,7 @@
     --text-muted: #6c757d;
     --white: #ffffff;
     --glass-bg: rgba(255, 255, 255, 0.9);
-    --shadow-glow: 0 10px 30px rgba(255, 51, 102, 0.25);
+    --shadow-glow: 0 10px 30px rgba(255, 51, 102, 0.2);
 }
 
 body.dark-glow {
@@ -109,6 +109,23 @@ html, body {
 }
 .nav-brand { font-family: 'Cinzel', serif; font-weight: 700; font-size: 1.4rem; color: var(--white); }
 .navbar.scrolled .nav-brand { color: var(--primary-color); }
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+.nav-links li a {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+.navbar.scrolled .nav-links li a {
+    color: var(--text-dark);
+}
+
 .icon-btn {
     width: 38px; height: 38px; border-radius: 50%; border: none;
     background: rgba(255,255,255,0.25); color: var(--white);
@@ -159,7 +176,7 @@ html, body {
 .btn-accent { background: #7209b7; color: var(--white); }
 .btn-outline { background: rgba(255,255,255,0.2); border: 1px solid var(--white); color: var(--white); }
 
-/* Sections */
+/* Section Padding & Header */
 .section-padding { padding: 60px 15px; position: relative; z-index: 2; }
 .bg-alt { background-color: var(--bg-alt); }
 .container { max-width: 900px; margin: 0 auto; width: 100%; }
@@ -167,6 +184,7 @@ html, body {
 .tagline { font-family: 'Dancing Script', cursive; font-size: 1.4rem; color: var(--primary-color); }
 .title { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--secondary-color); }
 
+/* Couple Profile */
 .couple-wrapper { display: flex; flex-direction: column; gap: 15px; }
 .profile-card { background: var(--card-bg); border-radius: 20px; padding: 20px; text-align: center; box-shadow: var(--shadow-glow); }
 .img-wrapper { width: 140px; height: 140px; margin: 0 auto 12px; border-radius: 50%; border: 3px solid var(--primary-color); position: relative; }
@@ -185,6 +203,129 @@ html, body {
     animation: heartBeat 1.5s infinite;
 }
 
+/* Section Sastra: Puisi, Pantun & Generator */
+.tab-sastra-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.sastra-tab-btn {
+    padding: 8px 18px;
+    border-radius: 25px;
+    border: 1px solid var(--primary-color);
+    background: var(--card-bg);
+    color: var(--text-dark);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.sastra-tab-btn.active, .sastra-tab-btn:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(255, 51, 102, 0.3);
+}
+
+.sastra-content {
+    display: none;
+}
+
+.sastra-content.active {
+    display: block;
+}
+
+.poem-box {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: var(--shadow-glow);
+    position: relative;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.poem-quote-icon {
+    font-size: 2rem;
+    color: rgba(255, 51, 102, 0.2);
+    margin-bottom: 10px;
+}
+
+.poem-box h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.poem-body p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+}
+
+.pantun-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 15px;
+}
+
+.pantun-card {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: var(--shadow-glow);
+    border-left: 4px solid var(--primary-color);
+}
+
+.pantun-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.pantun-card p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    font-style: italic;
+}
+
+.words-generator-box {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: var(--shadow-glow);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.words-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+}
+
+.dynamic-word-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Surprise Card */
 .interactive-card-box {
     background: var(--card-bg); border: 2px dashed var(--primary-color);
@@ -192,16 +333,51 @@ html, body {
 }
 .surprise-icon { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 10px; }
 
-/* Gallery */
+/* Galeri Potret Proporsional (Solusi Foto Tidak Terpotong) */
 .filter-buttons { display: flex; justify-content: center; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
 .filter-btn {
     padding: 6px 14px; border-radius: 15px; border: 1px solid var(--primary-color);
     background: var(--card-bg); color: var(--text-dark); font-size: 0.75rem; cursor: pointer;
 }
 .filter-btn.active { background: var(--primary-color); color: var(--white); }
-.gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-.gallery-item { height: 160px; border-radius: 12px; overflow: hidden; }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.gallery-item {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-glow);
+    transition: transform 0.3s ease;
+}
+
+.portrait-box {
+    width: 100%;
+    padding-top: 133%; /* Rasio Potret 3:4 */
+    position: relative;
+    background: #111;
+}
+
+.portrait-box img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; /* Menampilkan foto tegak potret dengan rapi */
+    object-position: center;
+}
+
+.gallery-caption {
+    padding: 8px;
+    font-size: 0.75rem;
+    text-align: center;
+    font-weight: 600;
+    color: var(--primary-dark);
+    background: var(--card-bg);
+}
 
 /* Toast Notice */
 .toast {
@@ -230,6 +406,10 @@ html, body {
 @keyframes heartBeat { 0%, 100% { transform: scale(1) rotate(-45deg); } 50% { transform: scale(1.15) rotate(-45deg); } }
 @keyframes spin { 100% { transform: rotate(360deg); } }
 @keyframes bounce { 100% { height: 100%; } }
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+}
 
 @media (min-width: 768px) {
     .couple-wrapper { flex-direction: row; }
