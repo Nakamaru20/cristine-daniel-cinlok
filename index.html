@@ -2,149 +2,139 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kisah Cinta KKN | Cristine & Hot Daniel</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Dancing+Script:wght@600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Dancing+Script:wght@600;700&family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
 
-    <!-- FontAwesome Icons & AOS Animation CSS -->
+    <!-- Icons & Animation CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
-    <!-- Style CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- Preloader Loading Screen -->
+    <!-- Preloader -->
     <div id="preloader">
         <div class="heart-pulse"></div>
-        <p>Memuat Kenangan Indah...</p>
+        <p>Memuat Kenangan Indah KKN...</p>
     </div>
 
-    <!-- Canvas Partikel Hati Melayang -->
+    <!-- Canvas Interactive Particles -->
     <canvas id="particles-canvas"></canvas>
+
+    <!-- Toast Notice -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Floating Music Bar Widget -->
+    <div class="music-player-widget">
+        <div class="song-info">
+            <i class="fas fa-music song-icon"></i>
+            <div class="song-text">
+                <span class="song-title">Dia Dia Dia</span>
+                <span class="song-sub">Telah Mencuri Hatiku ✨</span>
+            </div>
+        </div>
+        <!-- Equalizer Animation -->
+        <div class="equalizer" id="equalizer">
+            <span></span><span></span><span></span><span></span>
+        </div>
+        <button class="music-play-btn" id="musicToggle">
+            <i class="fas fa-play"></i>
+        </button>
+    </div>
+
+    <!-- Background Audio (Ganti link MP3 jika punya file audio langsung) -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+    </audio>
 
     <!-- Navigation Bar -->
     <nav class="navbar" id="navbar">
         <div class="nav-brand">C & D</div>
-        <ul class="nav-links">
-            <li><a href="#hero" class="nav-item">Beranda</a></li>
-            <li><a href="#couple" class="nav-item">Pasangan</a></li>
-            <li><a href="#story" class="nav-item">Kisah</a></li>
-            <li><a href="#gallery" class="nav-item">Galeri</a></li>
-        </ul>
-        <button class="music-toggle-btn" id="musicToggle" aria-label="Toggle Audio">
-            <i class="fas fa-music"></i>
-        </button>
+        <div class="nav-actions">
+            <button class="icon-btn" id="themeToggle" title="Mode Glowing"><i class="fas fa-moon"></i></button>
+        </div>
     </nav>
-
-    <!-- Background Audio -->
-    <audio id="bgMusic" loop>
-        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
-    </audio>
 
     <!-- Hero Section -->
     <section id="hero" class="hero-section">
         <div class="hero-overlay"></div>
-        <div class="hero-content" data-aos="zoom-in" data-aos-duration="1200">
-            <span class="sub-title">Perjalanan Cinta Masa KKN</span>
+        <div class="hero-content" data-aos="zoom-in">
+            <div class="glow-badge"><i class="fas fa-sparkles"></i> Kisah KKN 45 Hari</div>
             <h1 class="main-title">Cristine & Hot Daniel</h1>
             <p class="typewriter-text" id="typewriter"></p>
 
             <!-- Counter Box -->
-            <div class="counter-card" data-aos="fade-up" data-aos-delay="300">
-                <h3>Waktu Bersama Sejak KKN</h3>
+            <div class="counter-card" data-aos="fade-up">
+                <h3><i class="fas fa-heartBeat"></i> Kenangan 45 Hari KKN</h3>
                 <div id="timer" class="timer-grid">
-                    <div class="timer-box"><span id="days">00</span><p>Hari</p></div>
+                    <div class="timer-box"><span id="days">45</span><p>Hari</p></div>
                     <div class="timer-box"><span id="hours">00</span><p>Jam</p></div>
                     <div class="timer-box"><span id="minutes">00</span><p>Menit</p></div>
                     <div class="timer-box"><span id="seconds">00</span><p>Detik</p></div>
                 </div>
             </div>
 
-            <!-- Hero Action Buttons -->
-            <div class="hero-actions" data-aos="fade-up" data-aos-delay="500">
-                <a href="#story" class="btn btn-primary"><i class="fas fa-book-open"></i> Baca Kisah</a>
-                <button class="btn btn-outline" id="openSecretModal"><i class="fas fa-envelope"></i> Surat Rahasia</button>
+            <!-- Action Buttons -->
+            <div class="hero-actions-grid">
+                <button class="btn btn-primary" id="btnHeartBurst"><i class="fas fa-heart"></i> Hujan Hati</button>
+                <button class="btn btn-secondary" id="btnFireworks"><i class="fas fa-fireworks"></i> Kembang Api</button>
+                <button class="btn btn-accent" id="btnLoveQuote"><i class="fas fa-magic"></i> Alasan Cinta</button>
+                <button class="btn btn-outline" id="openSecretModal"><i class="fas fa-envelope-open-text"></i> Surat KKN</button>
             </div>
         </div>
     </section>
 
-    <!-- Couple Profile Section -->
+    <!-- Couple Section -->
     <section id="couple" class="section-padding">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <span class="tagline">Dua Hati Satu Tujuan</span>
-                <h2 class="title">Profil Pasangan</h2>
+                <span class="tagline">Dua Hati Satu Cerita</span>
+                <h2 class="title">Pasangan KKN</h2>
             </div>
 
             <div class="couple-wrapper">
-                <!-- Profile Cristine -->
-                <div class="profile-card" data-aos="fade-right">
+                <div class="profile-card glowing-border" data-aos="fade-up">
                     <div class="img-wrapper">
-                        <img src="img/cristine-main.jpg" alt="Cristine Natasia Sihaloho" id="imgCristine">
+                        <img src="img/cristine-main.jpg" alt="Cristine Natasia">
                         <div class="badge"><i class="fas fa-heart"></i></div>
                     </div>
                     <h3>Cristine Natasia Sihaloho</h3>
-                    <p class="role">Sosok Lembut & Penuh Perhatian</p>
-                    <p class="quote">"Di tengah riuhnya program kerja desa, ketenangan itu hadir lewat hadirnya seorang sosok yang tak terduga."</p>
+                    <p class="role">Kehangatan di Posko KKN</p>
+                    <p class="quote">"Dia dia dia... sosok yang hadir tanpa disangka dan telah mencuri hatiku."</p>
                 </div>
 
-                <!-- Heart Divider -->
                 <div class="couple-divider" data-aos="zoom-in">
                     <div class="heart-icon"><i class="fas fa-heart"></i></div>
                 </div>
 
-                <!-- Profile Daniel -->
-                <div class="profile-card" data-aos="fade-left">
+                <div class="profile-card glowing-border" data-aos="fade-up">
                     <div class="img-wrapper">
-                        <img src="img/daniel-main.jpg" alt="HOT DANIEL PANJAITAN" id="imgDaniel">
+                        <img src="img/daniel-main.jpg" alt="Hot Daniel">
                         <div class="badge"><i class="fas fa-heart"></i></div>
                     </div>
                     <h3>HOT DANIEL PANJAITAN</h3>
-                    <p class="role">Sosok Pemimpin & Pelindung</p>
-                    <p class="quote">"KKN mungkin hanyalah tugas kampus, namun menemukanmu adalah hadiah terindah dalam perjalanan hidupku."</p>
+                    <p class="role">Pelindung & Pemimpin</p>
+                    <p class="quote">"45 hari pengabdian desa yang menjadi awal kisah cinta seumur hidup."</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Story Timeline Section -->
-    <section id="story" class="section-padding bg-alt">
-        <div class="container">
+    <!-- Interactive Surprise Box -->
+    <section class="surprise-section section-padding bg-alt">
+        <div class="container text-center">
             <div class="section-header" data-aos="fade-up">
-                <span class="tagline">Jejak Langkah</span>
-                <h2 class="title">Perjalanan Cinta Kita</h2>
+                <span class="tagline">Sentuh Untuk Kejutan</span>
+                <h2 class="title">Kenapa Harus Kamu?</h2>
             </div>
-
-            <div class="timeline">
-                <div class="timeline-item left" data-aos="fade-right">
-                    <div class="timeline-content">
-                        <div class="date"><i class="fas fa-calendar-alt"></i> Pertemuan Pertama</div>
-                        <h3>Sapaan Awal di Posko</h3>
-                        <p>Awal mula saat tim KKN berkumpul. Tatapan canggung dan diskusi awal program kerja menjadi titik awal takdir mempertemukan Cristine dan Daniel.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item right" data-aos="fade-left">
-                    <div class="timeline-content">
-                        <div class="date"><i class="fas fa-sun"></i> Tengah Masa KKN</div>
-                        <h3>Saling Melengkapi di Lapangan</h3>
-                        <p>Menelusuri desa, mengadakan kegiatan untuk warga, hingga lelah yang terobati oleh canda tawa dan perhatian kecil yang tumbuh setiap harinya.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item left" data-aos="fade-right">
-                    <div class="timeline-content">
-                        <div class="date"><i class="fas fa-infinity"></i> Akhir Pengabdian</div>
-                        <h3>Awal Dari Sebuah Selamanya</h3>
-                        <p>Saat tugas KKN selesai, komitmen tak berakhir begitu saja. Janji hati terikat untuk saling menggenggam tangan menatap masa depan bersama.</p>
-                    </div>
-                </div>
+            <div class="interactive-card-box" id="surpriseCard" data-aos="zoom-in">
+                <i class="fas fa-gift surprise-icon"></i>
+                <p id="surpriseText">Klik di sini untuk membuka alasan manis kenapa kita dipertemukan di KKN!</p>
             </div>
         </div>
     </section>
@@ -153,79 +143,25 @@
     <section id="gallery" class="section-padding">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <span class="tagline">Kenangan Indah</span>
-                <h2 class="title">Galeri Foto</h2>
+                <span class="tagline">Dokumentasi Momen</span>
+                <h2 class="title">Galeri KKN</h2>
             </div>
 
-            <!-- Gallery Filter Buttons -->
             <div class="filter-buttons" data-aos="fade-up">
-                <button class="filter-btn active" data-filter="all">Semua Foto</button>
+                <button class="filter-btn active" data-filter="all">Semua</button>
                 <button class="filter-btn" data-filter="together">Berdua</button>
                 <button class="filter-btn" data-filter="cristine">Cristine</button>
                 <button class="filter-btn" data-filter="daniel">Daniel</button>
             </div>
 
-            <!-- Gallery Grid -->
             <div class="gallery-grid">
-                <!-- Foto Berdua -->
-                <div class="gallery-item together" data-aos="zoom-in">
-                    <img src="img/berdua-1.jpg" alt="Foto Berdua 1">
-                    <div class="gallery-overlay">
-                        <h4>Momen Berdua</h4>
-                        <p>Kebersamaan di Lokasi KKN</p>
-                    </div>
-                </div>
-                <div class="gallery-item together" data-aos="zoom-in">
-                    <img src="img/berdua-2.jpg" alt="Foto Berdua 2">
-                    <div class="gallery-overlay">
-                        <h4>Senyum Bersama</h4>
-                        <p>Di Sela-Sela Kegiatan Desa</p>
-                    </div>
-                </div>
-
-                <!-- Foto Cristine -->
-                <div class="gallery-item cristine" data-aos="zoom-in">
-                    <img src="img/cristine-1.jpg" alt="Foto Cristine 1">
-                    <div class="gallery-overlay">
-                        <h4>Cristine Natasia</h4>
-                        <p>Anggun & Mempesona</p>
-                    </div>
-                </div>
-                <div class="gallery-item cristine" data-aos="zoom-in">
-                    <img src="img/cristine-2.jpg" alt="Foto Cristine 2">
-                    <div class="gallery-overlay">
-                        <h4>Cristine Natasia</h4>
-                        <p>Keceriaan di Posko</p>
-                    </div>
-                </div>
-
-                <!-- Foto Daniel -->
-                <div class="gallery-item daniel" data-aos="zoom-in">
-                    <img src="img/daniel-1.jpg" alt="Foto Daniel 1">
-                    <div class="gallery-overlay">
-                        <h4>HOT DANIEL</h4>
-                        <p>Semangat Pengabdian</p>
-                    </div>
-                </div>
-                <div class="gallery-item daniel" data-aos="zoom-in">
-                    <img src="img/daniel-2.jpg" alt="Foto Daniel 2">
-                    <div class="gallery-overlay">
-                        <h4>HOT DANIEL</h4>
-                        <p>Momen Berkesan</p>
-                    </div>
-                </div>
+                <div class="gallery-item together" data-aos="zoom-in"><img src="img/berdua-1.jpg" alt="Berdua 1"></div>
+                <div class="gallery-item together" data-aos="zoom-in"><img src="img/berdua-2.jpg" alt="Berdua 2"></div>
+                <div class="gallery-item cristine" data-aos="zoom-in"><img src="img/cristine-1.jpg" alt="Cristine 1"></div>
+                <div class="gallery-item cristine" data-aos="zoom-in"><img src="img/cristine-2.jpg" alt="Cristine 2"></div>
+                <div class="gallery-item daniel" data-aos="zoom-in"><img src="img/daniel-1.jpg" alt="Daniel 1"></div>
+                <div class="gallery-item daniel" data-aos="zoom-in"><img src="img/daniel-2.jpg" alt="Daniel 2"></div>
             </div>
-        </div>
-    </section>
-
-    <!-- Love Quote Banner -->
-    <section class="quote-banner" data-aos="fade-up">
-        <div class="container">
-            <i class="fas fa-quote-left quote-icon"></i>
-            <blockquote class="banner-quote">
-                "Cinta tidak tercipta karena kesengajaan semata, melainkan dari ribuan detik kebersamaan, saling memahami, dan keberanian untuk mengarungi masa depan bersama."
-            </blockquote>
-            <span class="quote-author">- Cristine & Daniel -</span>
         </div>
     </section>
 
@@ -234,36 +170,21 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <button class="close-modal" id="closeSecretModal">&times;</button>
-                <div class="modal-header">
-                    <i class="fas fa-envelope-open-text modal-icon"></i>
-                    <h3>Pesan Penuh Cinta</h3>
-                </div>
-                <div class="modal-body">
-                    <p>
-                        Untuk <strong>Cristine Natasia Sihaloho</strong> & <strong>HOT DANIEL PANJAITAN</strong>,
-                    </p>
-                    <p>
-                        KKN mungkin merupakan babak awal dari cerita panjang kalian. Semoga setiap tawa, perjuangan, dan perhatian kecil yang terbangun di sana menjadi fondasi kuat untuk melangkah selamanya.
-                    </p>
-                </div>
+                <i class="fas fa-envelope-open-text modal-icon"></i>
+                <h3>Surat Rahasia KKN</h3>
+                <p>
+                    "Dia dia dia telah mencuri hatiku..." <br><br>
+                    Untuk <strong>Cristine Natasia Sihaloho</strong> & <strong>HOT DANIEL PANJAITAN</strong>, semoga 45 hari KKN ini menjadi kenangan terindah yang membawa kalian pada masa depan yang penuh kebahagiaan!
+                </p>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <h3>Cristine & Daniel</h3>
-            <p>Dibuat dengan cinta untuk mengabadikan momen berharga KKN.</p>
-            <div class="copyright">
-                &copy; 2026. All Rights Reserved.
-            </div>
-        </div>
+        <p>Cristine Natasia Sihaloho & HOT DANIEL PANJAITAN ♥</p>
     </footer>
 
-    <!-- AOS Animation Library JS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <!-- Script JS -->
     <script src="js/script.js"></script>
 </body>
 </html>
