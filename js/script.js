@@ -16,10 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
     /* 2. Sticky Navbar */
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 30) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+        if (navbar) {
+            if (window.scrollY > 30) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         }
     });
 
@@ -51,14 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     type();
 
-    /* 4. Timer 45 Hari KKN */
-    let secondsTotal = 45 * 24 * 3600;
+    /* 4. Live Timer 45 Hari KKN (Lengkap Jam, Menit, Detik Aktif) */
+    let totalSeconds = 45 * 86400 + 14 * 3600 + 28 * 60 + 42;
     setInterval(() => {
-        secondsTotal++;
-        const d = Math.floor(secondsTotal / 86400);
-        const h = Math.floor((secondsTotal % 86400) / 3600);
-        const m = Math.floor((secondsTotal % 3600) / 60);
-        const s = Math.floor(secondsTotal % 60);
+        totalSeconds++;
+        const d = Math.floor(totalSeconds / 86400);
+        const h = Math.floor((totalSeconds % 86400) / 3600);
+        const m = Math.floor((totalSeconds % 3600) / 60);
+        const s = Math.floor(totalSeconds % 60);
 
         const daysEl = document.getElementById('days');
         const hoursEl = document.getElementById('hours');
@@ -71,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (secondsEl) secondsEl.textContent = s < 10 ? '0' + s : s;
     }, 1000);
 
-    /* 5. Music Player & Equalizer Logic */
+    /* 5. Pemutar Musik "Dia Dia Dia" & Equalizer */
     const musicBtn = document.getElementById('musicToggle');
     const bgMusic = document.getElementById('bgMusic');
     const equalizer = document.getElementById('equalizer');
@@ -88,9 +90,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 bgMusic.play().then(() => {
                     musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
                     if (equalizer) equalizer.classList.remove('paused');
-                    showToast("🎵 Dia Dia Dia - Fatin Shidqia");
+                    showToast("🎵 Memutar: Dia Dia Dia - Fatin Shidqia");
                 }).catch(() => {
-                    showToast("Klik layar untuk mengizinkan musik diputar");
+                    showToast("Satu sentuhan lagi untuk memutar musik!");
                 });
             }
             isPlaying = !isPlaying;
@@ -108,7 +110,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* 7. Toast Utility Function */
+    /* 7. Tab Sastra (Puisi, Pantun, Kata-Kata) */
+    const sastraTabs = document.querySelectorAll('.sastra-tab-btn');
+    const sastraContents = document.querySelectorAll('.sastra-content');
+
+    sastraTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            sastraTabs.forEach(t => t.classList.remove('active'));
+            sastraContents.forEach(c => c.classList.remove('active'));
+
+            tab.classList.add('active');
+            const targetId = `content-${tab.getAttribute('data-sastra')}`;
+            const targetContent = document.getElementById(targetId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+        });
+    });
+
+    /* 8. Generator Kata-Kata Romantis Random */
+    const loveWordsList = [
+        '"45 hari bersamamu di desa mengajarkan bahwa kebahagiaan itu sederhana."',
+        '"Dia dia dia... sosok yang tak pernah kusangka akan menjadi tempat bersandar."',
+        '"Terima kasih telah mewarnai setiap jam dan menit di sela-sela tugas KKN."',
+        '"Cristine Natasia & Hot Daniel: Kisah pengabdian yang berbuah rasa cinta abadi."',
+        '"Di antara tumpukan projo dan diskusi posko, hatiku menemukan pelabuhannya."',
+        '"Masa KKN mungkin usai, tetapi rasa ini baru saja dimulai."'
+    ];
+
+    const btnGenerateNewWord = document.getElementById('btnGenerateNewWord');
+    const dynamicWordDisplay = document.getElementById('dynamicWordDisplay');
+
+    if (btnGenerateNewWord && dynamicWordDisplay) {
+        btnGenerateNewWord.addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * loveWordsList.length);
+            dynamicWordDisplay.style.opacity = '0';
+            setTimeout(() => {
+                dynamicWordDisplay.textContent = loveWordsList[randomIndex];
+                dynamicWordDisplay.style.opacity = '1';
+            }, 200);
+            createTouchBurst(window.innerWidth / 2, window.innerHeight / 2);
+        });
+    }
+
+    /* 9. Toast Utility */
     function showToast(msg) {
         const toast = document.getElementById('toast');
         if (toast) {
@@ -118,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /* 8. Hero Interactive Buttons */
+    /* 10. Interactive Buttons Hero */
     const btnHeartBurst = document.getElementById('btnHeartBurst');
     if (btnHeartBurst) {
         btnHeartBurst.addEventListener('click', () => {
@@ -136,20 +181,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const btnLoveQuote = document.getElementById('btnLoveQuote');
-    const loveQuotesList = [
-        "Dia dia dia... telah mencuri hatiku sejak di KKN!",
-        "45 hari bersama warga, selamanya bersama kamu.",
-        "Setiap detik pengabdian desa terasa manis karena kehadiranmu.",
-        "Cristine Natasia & Hot Daniel: Pasangan terbaik KKN!"
-    ];
     if (btnLoveQuote) {
         btnLoveQuote.addEventListener('click', () => {
-            const randomQuote = loveQuotesList[Math.floor(Math.random() * loveQuotesList.length)];
-            showToast(randomQuote);
+            const random = loveWordsList[Math.floor(Math.random() * loveWordsList.length)];
+            showToast(random);
         });
     }
 
-    /* 9. Interactive Surprise Box */
+    /* 11. Interactive Surprise Box */
     const surpriseCard = document.getElementById('surpriseCard');
     const surpriseText = document.getElementById('surpriseText');
     const surprises = [
@@ -165,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* 10. Gallery Filter */
+    /* 12. Gallery Filter Function */
     const filterButtons = document.querySelectorAll('.filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
 
@@ -185,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* 11. Modal Control */
+    /* 13. Modal Controls */
     const secretModal = document.getElementById('secretModal');
     const openModalBtn = document.getElementById('openSecretModal');
     const closeModalBtn = document.getElementById('closeSecretModal');
@@ -200,14 +239,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === secretModal) secretModal.classList.remove('active');
     });
 
-    /* 12. Screen Touch/Click Burst Effect */
+    /* 14. Screen Touch/Click Particle Burst */
     window.addEventListener('click', (e) => {
         if (!e.target.closest('button') && !e.target.closest('a')) {
             createTouchBurst(e.clientX, e.clientY);
         }
     });
 
-    /* 13. Canvas Particles Engine */
+    /* 15. Canvas Particles Engine */
     const canvas = document.getElementById('particles-canvas');
     let parts = [];
 
@@ -250,10 +289,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         setInterval(() => {
-            if (parts.length < 30) {
+            if (parts.length < 25) {
                 parts.push(new Part());
             }
-        }, 300);
+        }, 350);
 
         function loop() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
