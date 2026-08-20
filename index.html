@@ -8,9 +8,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Dancing+Script:wght@600;700&family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Dancing+Script:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
 
-    <!-- Icons & Animation CSS -->
+    <!-- FontAwesome Icons & AOS Animation Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="css/style.css">
@@ -19,20 +19,24 @@
 
     <!-- Preloader Screen -->
     <div id="preloader">
-        <div class="heart-pulse"></div>
-        <p>Memuat Kenangan Indah KKN...</p>
+        <div class="heart-pulse-loader">
+            <div class="heart-shape"></div>
+        </div>
+        <p class="loader-text">Memuat Kenangan Indah KKN...</p>
     </div>
 
-    <!-- Canvas Interactive Particles -->
+    <!-- Canvas Interactive Background Particles -->
     <canvas id="particles-canvas"></canvas>
 
-    <!-- Toast Notification -->
-    <div id="toast" class="toast"></div>
+    <!-- Toast Notification Widget -->
+    <div id="toast" class="toast-card"></div>
 
-    <!-- Floating Music Widget (Dia Dia Dia - Fatin Shidqia) -->
+    <!-- Floating Glassmorphism Music Widget -->
     <div class="music-player-widget">
         <div class="song-info">
-            <i class="fas fa-music song-icon"></i>
+            <div class="song-icon-wrapper">
+                <i class="fas fa-compact-disc song-icon"></i>
+            </div>
             <div class="song-text">
                 <span class="song-title">Dia Dia Dia</span>
                 <span class="song-sub">Fatin Shidqia ✨</span>
@@ -46,34 +50,36 @@
         </button>
     </div>
 
-    <!-- Audio Player (Terkunci ke audio/dia-dia-dia.mp3) -->
+    <!-- Audio Element (Audio Lokal Khusus) -->
     <audio id="bgMusic" src="audio/dia-dia-dia.mp3" loop preload="auto"></audio>
 
     <!-- Navigation Bar -->
     <nav class="navbar" id="navbar">
-        <div class="nav-brand">C & D</div>
-        <ul class="nav-links">
-            <li><a href="#hero">Beranda</a></li>
-            <li><a href="#couple">Pasangan</a></li>
-            <li><a href="#sastra">Puisi & Pantun</a></li>
-            <li><a href="#gallery">Galeri</a></li>
-        </ul>
-        <div class="nav-actions">
-            <button class="icon-btn" id="themeToggle" title="Mode Glowing"><i class="fas fa-moon"></i></button>
+        <div class="nav-container">
+            <a href="#hero" class="nav-brand">C <i class="fas fa-heart brand-heart"></i> D</a>
+            <ul class="nav-links">
+                <li><a href="#hero" class="nav-link">Beranda</a></li>
+                <li><a href="#couple" class="nav-link">Pasangan</a></li>
+                <li><a href="#sastra" class="nav-link">Sastra Cinta</a></li>
+                <li><a href="#gallery" class="nav-link">Galeri</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="icon-btn" id="themeToggle" title="Mode Glowing"><i class="fas fa-moon"></i></button>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="hero" class="hero-section">
         <div class="hero-overlay"></div>
-        <div class="hero-content" data-aos="zoom-in">
-            <div class="glow-badge"><i class="fas fa-sparkles"></i> Kenangan Indah KKN</div>
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="glow-badge"><i class="fas fa-sparkles"></i> Kenangan Indah 45 Hari KKN</div>
             <h1 class="main-title">Cristine & Hot Daniel</h1>
             <p class="typewriter-text" id="typewriter"></p>
 
-            <!-- Counter Box 45 Hari (Lengkap dengan nilai awal bergerak) -->
-            <div class="counter-card" data-aos="fade-up">
-                <h3><i class="fas fa-heartbeat"></i> Perjalanan Cinta KKN</h3>
+            <!-- Counter Box 45 Hari -->
+            <div class="counter-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="card-header-sm"><i class="fas fa-heartbeat"></i> Perjalanan Cinta KKN</div>
                 <div id="timer" class="timer-grid">
                     <div class="timer-box"><span id="days">45</span><p>Hari</p></div>
                     <div class="timer-box"><span id="hours">14</span><p>Jam</p></div>
@@ -83,12 +89,15 @@
             </div>
 
             <!-- Hero Action Buttons Grid -->
-            <div class="hero-actions-grid">
+            <div class="hero-actions-grid" data-aos="fade-up" data-aos-delay="400">
                 <button class="btn btn-primary" id="btnHeartBurst"><i class="fas fa-heart"></i> Hujan Hati</button>
                 <button class="btn btn-secondary" id="btnFireworks"><i class="fas fa-fireworks"></i> Kembang Api</button>
-                <button class="btn btn-accent" id="btnLoveQuote"><i class="fas fa-comment-dots"></i> Acak Kata-Kata</button>
+                <button class="btn btn-accent" id="btnLoveQuote"><i class="fas fa-comment-dots"></i> Acak Kata</button>
                 <button class="btn btn-outline" id="openSecretModal"><i class="fas fa-envelope-open-text"></i> Surat KKN</button>
             </div>
+        </div>
+        <div class="scroll-indicator">
+            <a href="#couple"><i class="fas fa-chevron-down"></i></a>
         </div>
     </section>
 
@@ -101,12 +110,13 @@
             </div>
 
             <div class="couple-wrapper">
-                <div class="profile-card" data-aos="fade-up">
+                <!-- Cristine -->
+                <div class="profile-card" data-aos="fade-right">
                     <div class="img-wrapper">
                         <img src="img/cristine-main.jpg" alt="Cristine Natasia Sihaloho" onerror="this.src='img/cristine-main.jpeg'">
                         <div class="badge"><i class="fas fa-heart"></i></div>
                     </div>
-                    <h3>Cristine Natasia Sihaloho</h3>
+                    <h3 class="profile-name">Cristine Natasia Sihaloho</h3>
                     <p class="role">Kehangatan di Posko KKN</p>
                     <p class="quote">"Dia dia dia... telah mencuri hatiku sejak pertama kali menyapa di lokasi KKN."</p>
                 </div>
@@ -115,12 +125,13 @@
                     <div class="heart-icon"><i class="fas fa-heart"></i></div>
                 </div>
 
-                <div class="profile-card" data-aos="fade-up">
+                <!-- Daniel -->
+                <div class="profile-card" data-aos="fade-left">
                     <div class="img-wrapper">
                         <img src="img/daniel-main.jpg" alt="HOT DANIEL PANJAITAN" onerror="this.src='img/daniel-main.jpeg'">
                         <div class="badge"><i class="fas fa-heart"></i></div>
                     </div>
-                    <h3>HOT DANIEL PANJAITAN</h3>
+                    <h3 class="profile-name">HOT DANIEL PANJAITAN</h3>
                     <p class="role">Pelindung & Pemimpin</p>
                     <p class="quote">"45 hari pengabdian desa yang menjadi awal dari kisah cinta selamanya."</p>
                 </div>
@@ -136,7 +147,7 @@
                 <h2 class="title">Puisi & Pantun KKN</h2>
             </div>
 
-            <!-- Tab Buttons untuk Sastra -->
+            <!-- Tab Buttons -->
             <div class="tab-sastra-buttons" data-aos="fade-up">
                 <button class="sastra-tab-btn active" data-sastra="puisi"><i class="fas fa-feather-alt"></i> Puisi Cinta</button>
                 <button class="sastra-tab-btn" data-sastra="pantun"><i class="fas fa-scroll"></i> Pantun KKN</button>
@@ -147,7 +158,7 @@
             <div class="sastra-content active" id="content-puisi" data-aos="zoom-in">
                 <div class="poem-box">
                     <i class="fas fa-quote-left poem-quote-icon"></i>
-                    <h3>"Jejak 45 Hari di Desa"</h3>
+                    <h3 class="poem-title">"Jejak 45 Hari di Desa"</h3>
                     <div class="poem-body">
                         <p>Di antara riuhnya program kerja dan debu jalanan desa,</p>
                         <p>Takdir menyulam dua nama tanpa kita rencana.</p>
@@ -177,7 +188,6 @@
                         <div class="pantun-tag"><i class="fas fa-heart"></i> Pantun 2</div>
                         <p>Membeli kopi di warung Pak Mamat,</p>
                         <p>Diminum hangat bersama teman.</p>
-
                         <p>45 hari terasa sangat singkat,</p>
                         <p>Sebab dekat Daniel hati selalu nyaman.</p>
                     </div>
@@ -229,6 +239,7 @@
                 <h2 class="title">Galeri KKN</h2>
             </div>
 
+            <!-- Filter Buttons -->
             <div class="filter-buttons" data-aos="fade-up">
                 <button class="filter-btn active" data-filter="all">Semua</button>
                 <button class="filter-btn" data-filter="together">Berdua</button>
@@ -236,6 +247,7 @@
                 <button class="filter-btn" data-filter="daniel">Daniel</button>
             </div>
 
+            <!-- Gallery Grid Modern Portrait -->
             <div class="gallery-grid">
                 <div class="gallery-item together" data-aos="zoom-in">
                     <div class="portrait-box">
@@ -283,8 +295,8 @@
             <div class="modal-content">
                 <button class="close-modal" id="closeSecretModal">&times;</button>
                 <i class="fas fa-envelope-open-text modal-icon"></i>
-                <h3>Surat Rahasia KKN</h3>
-                <p>
+                <h3 class="modal-title">Surat Rahasia KKN</h3>
+                <p class="modal-body-text">
                     "Dia dia dia telah mencuri hatiku..." <br><br>
                     Untuk <strong>Cristine Natasia Sihaloho</strong> & <strong>HOT DANIEL PANJAITAN</strong>, semoga kenangan manis 45 hari KKN ini menjadi fondasi bahagia yang abadi selamanya!
                 </p>
@@ -292,10 +304,15 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="footer">
-        <p>Cristine Natasia Sihaloho & HOT DANIEL PANJAITAN ♥</p>
+        <div class="container">
+            <p class="footer-title">Cristine Natasia Sihaloho & HOT DANIEL PANJAITAN ♥</p>
+            <p class="footer-sub">&copy; 2026. Abadi Dalam Kenangan KKN.</p>
+        </div>
     </footer>
 
+    <!-- AOS Animation & Script JS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="js/script.js"></script>
 </body>
