@@ -1,35 +1,35 @@
 /* ==========================================================================
-   DESIGN VARIABLES & SYSTEM RESET
+   1. DESIGN VARIABLES & SYSTEM RESET
    ========================================================================== */
 :root {
     --primary-color: #ff3366;
     --primary-dark: #c9184a;
-    --secondary-color: #8b263e;
-    --bg-light: #fff5f7;
-    --bg-alt: #ffebee;
-    --card-bg: #ffffff;
-    --text-dark: #1f2937;
-    --text-muted: #6b7280;
+    --secondary-color: #ff6584;
+    --bg-light: #0d0205;
+    --bg-alt: #16040a;
+    --card-bg: #210710;
+    --text-dark: #f9fafb;
+    --text-muted: #9ca3af;
     --white: #ffffff;
-    --glass-bg: rgba(255, 255, 255, 0.88);
-    --glass-border: rgba(255, 51, 102, 0.2);
-    --shadow-soft: 0 10px 25px -5px rgba(255, 51, 102, 0.12), 0 8px 10px -6px rgba(255, 51, 102, 0.08);
-    --shadow-glow: 0 15px 35px rgba(255, 51, 102, 0.22);
+    --glass-bg: rgba(33, 7, 16, 0.88);
+    --glass-border: rgba(255, 51, 102, 0.35);
+    --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 15px 35px rgba(255, 51, 102, 0.25);
     --radius-lg: 24px;
     --radius-md: 16px;
     --radius-sm: 12px;
 }
 
-/* Dark Glow Theme Modis */
-body.dark-glow {
-    --bg-light: #0d0205;
-    --bg-alt: #17040a;
-    --card-bg: #210710;
-    --text-dark: #f9fafb;
-    --text-muted: #9ca3af;
-    --glass-bg: rgba(33, 7, 16, 0.88);
-    --glass-border: rgba(255, 51, 102, 0.35);
-    --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+/* Light Mode Theme Alternative */
+body.light-theme {
+    --bg-light: #fff5f7;
+    --bg-alt: #ffebee;
+    --card-bg: #ffffff;
+    --text-dark: #1f2937;
+    --text-muted: #6b7280;
+    --glass-bg: rgba(255, 255, 255, 0.9);
+    --glass-border: rgba(255, 51, 102, 0.2);
+    --shadow-soft: 0 10px 25px -5px rgba(255, 51, 102, 0.12);
 }
 
 * {
@@ -51,7 +51,7 @@ html, body {
 }
 
 /* ==========================================================================
-   PRELOADER & PARTICLES
+   2. PRELOADER & BACKGROUND PARTICLES
    ========================================================================== */
 #preloader {
     position: fixed;
@@ -96,7 +96,7 @@ html, body {
     font-family: 'Cinzel', serif;
     font-size: 0.95rem;
     letter-spacing: 2px;
-    color: var(--primary-dark);
+    color: var(--primary-color);
 }
 
 #particles-canvas {
@@ -108,7 +108,7 @@ html, body {
 }
 
 /* ==========================================================================
-   FLOATING MUSIC PLAYER WIDGET
+   3. FLOATING GLASSMORPHISM MUSIC PLAYER
    ========================================================================== */
 .music-player-widget {
     position: fixed;
@@ -119,26 +119,35 @@ html, body {
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--glass-border);
     border-radius: 40px;
-    padding: 10px 20px;
+    padding: 8px 16px;
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     box-shadow: var(--shadow-glow);
     z-index: 1000;
-    width: 90%; max-width: 360px;
+    width: 92%; max-width: 360px;
+}
+
+.song-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    overflow: hidden;
 }
 
 .song-icon-wrapper {
-    width: 36px; height: 36px;
-    background: rgba(255, 51, 102, 0.15);
+    width: 34px; height: 34px;
+    background: rgba(255, 51, 102, 0.2);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .song-icon {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--primary-color);
     animation: spin 6s linear infinite;
 }
@@ -146,7 +155,6 @@ html, body {
 .song-text {
     display: flex;
     flex-direction: column;
-    flex: 1;
     overflow: hidden;
 }
 
@@ -168,6 +176,7 @@ html, body {
     gap: 3px;
     align-items: flex-end;
     height: 16px;
+    flex-shrink: 0;
 }
 
 .equalizer span {
@@ -194,18 +203,19 @@ html, body {
     align-items: center;
     font-size: 0.95rem;
     box-shadow: 0 4px 12px rgba(255, 51, 102, 0.4);
+    flex-shrink: 0;
     transition: transform 0.2s ease;
 }
 
 .music-play-btn:active { transform: scale(0.9); }
 
 /* ==========================================================================
-   NAVIGATION BAR
+   4. NAVIGATION BAR (RESPONSIF LAPTOP & HP)
    ========================================================================== */
 .navbar {
     position: fixed;
     top: 0; left: 0; width: 100%;
-    padding: 16px 0;
+    padding: 14px 0;
     z-index: 100;
     transition: background 0.3s ease, padding 0.3s ease;
 }
@@ -214,8 +224,8 @@ html, body {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    padding: 12px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding: 10px 0;
 }
 
 .nav-container {
@@ -241,8 +251,6 @@ html, body {
     margin: 0 2px;
 }
 
-.navbar.scrolled .nav-brand { color: var(--primary-color); }
-
 .nav-links {
     display: flex;
     list-style: none;
@@ -257,28 +265,25 @@ html, body {
     transition: color 0.3s ease;
 }
 
-.navbar.scrolled .nav-link { color: var(--text-dark); }
 .nav-link:hover { color: var(--primary-color) !important; }
 
 .icon-btn {
-    width: 40px; height: 40px;
+    width: 38px; height: 38px;
     border-radius: 50%; border: none;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
     color: var(--white);
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1rem;
+    font-size: 0.95rem;
     transition: 0.3s ease;
 }
 
-.navbar.scrolled .icon-btn {
-    background: var(--primary-color);
-}
+.icon-btn:hover { background: var(--primary-color); }
 
 /* ==========================================================================
-   HERO SECTION & TIMER
+   5. HERO SECTION & TIMER
    ========================================================================== */
 .hero-section {
     position: relative;
@@ -297,7 +302,7 @@ html, body {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: linear-gradient(180deg, rgba(15, 3, 8, 0.78) 0%, rgba(139, 38, 62, 0.82) 100%);
+    background: linear-gradient(180deg, rgba(13, 2, 5, 0.82) 0%, rgba(139, 38, 62, 0.85) 100%);
 }
 
 .hero-content {
@@ -325,7 +330,7 @@ html, body {
     font-size: 2.8rem;
     font-weight: 700;
     margin: 8px 0;
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .typewriter-text {
@@ -365,15 +370,16 @@ html, body {
 }
 
 .timer-box {
-    background: rgba(255, 230, 235, 0.65);
+    background: rgba(255, 51, 102, 0.12);
     padding: 10px 4px;
     border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 51, 102, 0.2);
 }
 
 .timer-box span {
     font-size: 1.5rem;
     font-weight: 800;
-    color: var(--primary-dark);
+    color: var(--primary-color);
     display: block;
     line-height: 1.1;
 }
@@ -412,7 +418,7 @@ html, body {
 .btn-primary { background: var(--primary-color); color: var(--white); box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4); }
 .btn-secondary { background: #ff9f1c; color: var(--white); box-shadow: 0 4px 15px rgba(255, 159, 28, 0.4); }
 .btn-accent { background: #7209b7; color: var(--white); box-shadow: 0 4px 15px rgba(114, 9, 183, 0.4); }
-.btn-outline { background: rgba(255, 255, 255, 0.2); border: 1px solid var(--white); color: var(--white); }
+.btn-outline { background: rgba(255, 255, 255, 0.15); border: 1px solid var(--white); color: var(--white); }
 
 .scroll-indicator {
     position: absolute;
@@ -429,7 +435,7 @@ html, body {
 }
 
 /* ==========================================================================
-   SECTIONS GENERAL & COUPLE PROFILE
+   6. SECTIONS GENERAL & COUPLE PROFILE
    ========================================================================== */
 .section-padding { padding: 70px 20px; position: relative; z-index: 2; }
 .bg-alt { background-color: var(--bg-alt); }
@@ -455,7 +461,7 @@ html, body {
     width: 150px; height: 150px;
     margin: 0 auto 16px;
     border-radius: 50%;
-    border: 4px solid var(--primary-color);
+    border: 3px solid var(--primary-color);
     position: relative;
     padding: 3px;
 }
@@ -469,7 +475,7 @@ html, body {
 .badge {
     position: absolute;
     bottom: 4px; right: 4px;
-    width: 36px; height: 36px;
+    width: 34px; height: 34px;
     background: var(--primary-dark);
     color: var(--white);
     border-radius: 50%;
@@ -517,7 +523,7 @@ html, body {
 }
 
 /* ==========================================================================
-   SECTION SASTRA: PUISI, PANTUN & GENERATOR
+   7. SECTION SASTRA: PUISI, PANTUN & GENERATOR
    ========================================================================== */
 .tab-sastra-buttons {
     display: flex;
@@ -561,7 +567,7 @@ html, body {
 
 .poem-quote-icon {
     font-size: 2rem;
-    color: rgba(255, 51, 102, 0.25);
+    color: rgba(255, 51, 102, 0.3);
     margin-bottom: 10px;
 }
 
@@ -611,7 +617,7 @@ html, body {
 .words-generator-box {
     background: var(--card-bg);
     border-radius: var(--radius-lg);
-    padding: 35px 20px;
+    padding: 30px 20px;
     text-align: center;
     box-shadow: var(--shadow-soft);
     max-width: 600px;
@@ -627,15 +633,27 @@ html, body {
 
 .dynamic-word-text {
     font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-style: italic;
     color: var(--secondary-color);
-    margin-bottom: 22px;
+    margin-bottom: 20px;
     min-height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
+    line-height: 1.5;
     transition: opacity 0.3s ease;
+}
+
+.btn-generate {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    font-size: 0.85rem;
+    text-align: center;
+    white-space: normal; /* Memastikan teks tombol panjang bisa membungkus rapi di HP */
+    line-height: 1.3;
 }
 
 /* Surprise Box */
@@ -652,7 +670,7 @@ html, body {
 .surprise-icon { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 10px; }
 
 /* ==========================================================================
-   GALERI POTRET PROPORSIONAL (Bebas Crop Terpotong)
+   8. GALERI POTRET PROPORSIONAL (Bebas Crop Terpotong)
    ========================================================================== */
 .filter-buttons {
     display: flex;
@@ -680,7 +698,7 @@ html, body {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 14px;
 }
 
@@ -692,7 +710,6 @@ html, body {
     border: 1px solid var(--glass-border);
 }
 
-/* Trik Rasio Potret 3:4 Menampilkan Seluruh Foto Tanpa Terpotong Ekstrem */
 .portrait-box {
     width: 100%;
     padding-top: 133.33%;
@@ -713,17 +730,17 @@ html, body {
     font-size: 0.75rem;
     text-align: center;
     font-weight: 600;
-    color: var(--primary-dark);
+    color: var(--secondary-color);
 }
 
 /* ==========================================================================
-   TOAST, MODAL & FOOTER
+   9. TOAST, MODAL & FOOTER
    ========================================================================== */
 .toast-card {
     position: fixed;
     top: 20px; left: 50%;
     transform: translateX(-50%) translateY(-100px);
-    background: rgba(0, 0, 0, 0.88);
+    background: rgba(0, 0, 0, 0.9);
     color: var(--white);
     padding: 12px 24px;
     border-radius: 30px;
@@ -732,7 +749,9 @@ html, body {
     transition: 0.3s ease;
     opacity: 0;
     pointer-events: none;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    text-align: center;
+    max-width: 90%;
 }
 
 .toast-card.show {
@@ -744,7 +763,7 @@ html, body {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -763,7 +782,8 @@ html, body {
     width: 88%; max-width: 400px;
     text-align: center;
     position: relative;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--glass-border);
 }
 
 .close-modal {
@@ -782,7 +802,7 @@ html, body {
 .footer {
     text-align: center;
     padding: 35px 20px;
-    background: #080103;
+    background: #050102;
     color: var(--white);
 }
 
@@ -798,9 +818,9 @@ html, body {
 @keyframes bounce { 100% { height: 100%; } }
 @keyframes floatDown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
 
-/* Media Queries Responsive */
+/* Media Queries Responsif HP vs Laptop */
 @media (max-width: 768px) {
-    .nav-links { display: none; }
+    .nav-links { display: none; } /* Menyembunyikan teks menu yang bikin tumpang tindih di HP */
     .main-title { font-size: 2.2rem; }
 }
 
