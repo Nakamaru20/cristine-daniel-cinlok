@@ -29,7 +29,7 @@
     <!-- Toast Notification -->
     <div id="toast" class="toast"></div>
 
-    <!-- Floating Music Widget (Fatin - Dia Dia Dia) -->
+    <!-- Floating Music Widget (Dia Dia Dia - Fatin Shidqia) -->
     <div class="music-player-widget">
         <div class="song-info">
             <i class="fas fa-music song-icon"></i>
@@ -46,12 +46,18 @@
         </button>
     </div>
 
-    <!-- Audio Element (Terkunci khusus file lokal) -->
-    <audio id="bgMusic" src="audio/dia-dia-dia.mp3" loop></audio>
+    <!-- Audio Player (Terkunci ke audio/dia-dia-dia.mp3) -->
+    <audio id="bgMusic" src="audio/dia-dia-dia.mp3" loop preload="auto"></audio>
 
     <!-- Navigation Bar -->
     <nav class="navbar" id="navbar">
         <div class="nav-brand">C & D</div>
+        <ul class="nav-links">
+            <li><a href="#hero">Beranda</a></li>
+            <li><a href="#couple">Pasangan</a></li>
+            <li><a href="#sastra">Puisi & Pantun</a></li>
+            <li><a href="#gallery">Galeri</a></li>
+        </ul>
         <div class="nav-actions">
             <button class="icon-btn" id="themeToggle" title="Mode Glowing"><i class="fas fa-moon"></i></button>
         </div>
@@ -61,13 +67,13 @@
     <section id="hero" class="hero-section">
         <div class="hero-overlay"></div>
         <div class="hero-content" data-aos="zoom-in">
-            <div class="glow-badge"><i class="fas fa-sparkles"></i> Kisah KKN 45 Hari</div>
+            <div class="glow-badge"><i class="fas fa-sparkles"></i> Kenangan Indah KKN</div>
             <h1 class="main-title">Cristine & Hot Daniel</h1>
             <p class="typewriter-text" id="typewriter"></p>
 
-            <!-- Counter Box 45 Hari (Lengkap dengan angka jam/menit/detik aktif) -->
+            <!-- Counter Box 45 Hari (Lengkap dengan nilai awal bergerak) -->
             <div class="counter-card" data-aos="fade-up">
-                <h3><i class="fas fa-heartbeat"></i> Kenangan 45 Hari KKN</h3>
+                <h3><i class="fas fa-heartbeat"></i> Perjalanan Cinta KKN</h3>
                 <div id="timer" class="timer-grid">
                     <div class="timer-box"><span id="days">45</span><p>Hari</p></div>
                     <div class="timer-box"><span id="hours">14</span><p>Jam</p></div>
@@ -76,11 +82,11 @@
                 </div>
             </div>
 
-            <!-- Action Buttons Grid -->
+            <!-- Hero Action Buttons Grid -->
             <div class="hero-actions-grid">
                 <button class="btn btn-primary" id="btnHeartBurst"><i class="fas fa-heart"></i> Hujan Hati</button>
                 <button class="btn btn-secondary" id="btnFireworks"><i class="fas fa-fireworks"></i> Kembang Api</button>
-                <button class="btn btn-accent" id="btnLoveQuote"><i class="fas fa-magic"></i> Alasan Cinta</button>
+                <button class="btn btn-accent" id="btnLoveQuote"><i class="fas fa-comment-dots"></i> Acak Kata-Kata</button>
                 <button class="btn btn-outline" id="openSecretModal"><i class="fas fa-envelope-open-text"></i> Surat KKN</button>
             </div>
         </div>
@@ -97,7 +103,7 @@
             <div class="couple-wrapper">
                 <div class="profile-card" data-aos="fade-up">
                     <div class="img-wrapper">
-                        <img src="img/cristine-main.jpg" alt="Cristine Natasia Sihaloho" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500'">
+                        <img src="img/cristine-main.jpg" alt="Cristine Natasia Sihaloho" onerror="this.src='img/cristine-main.jpeg'">
                         <div class="badge"><i class="fas fa-heart"></i></div>
                     </div>
                     <h3>Cristine Natasia Sihaloho</h3>
@@ -111,7 +117,7 @@
 
                 <div class="profile-card" data-aos="fade-up">
                     <div class="img-wrapper">
-                        <img src="img/daniel-main.jpg" alt="HOT DANIEL PANJAITAN" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500'">
+                        <img src="img/daniel-main.jpg" alt="HOT DANIEL PANJAITAN" onerror="this.src='img/daniel-main.jpeg'">
                         <div class="badge"><i class="fas fa-heart"></i></div>
                     </div>
                     <h3>HOT DANIEL PANJAITAN</h3>
@@ -122,8 +128,87 @@
         </div>
     </section>
 
+    <!-- Section Sastra: Puisi, Pantun & Generator Kata -->
+    <section id="sastra" class="section-padding bg-alt">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="tagline">Ungkapan Perasaan</span>
+                <h2 class="title">Puisi & Pantun KKN</h2>
+            </div>
+
+            <!-- Tab Buttons untuk Sastra -->
+            <div class="tab-sastra-buttons" data-aos="fade-up">
+                <button class="sastra-tab-btn active" data-sastra="puisi"><i class="fas fa-feather-alt"></i> Puisi Cinta</button>
+                <button class="sastra-tab-btn" data-sastra="pantun"><i class="fas fa-scroll"></i> Pantun KKN</button>
+                <button class="sastra-tab-btn" data-sastra="katakata"><i class="fas fa-quote-right"></i> Ribuan Kata Cinta</button>
+            </div>
+
+            <!-- Content Puisi -->
+            <div class="sastra-content active" id="content-puisi" data-aos="zoom-in">
+                <div class="poem-box">
+                    <i class="fas fa-quote-left poem-quote-icon"></i>
+                    <h3>"Jejak 45 Hari di Desa"</h3>
+                    <div class="poem-body">
+                        <p>Di antara riuhnya program kerja dan debu jalanan desa,</p>
+                        <p>Takdir menyulam dua nama tanpa kita rencana.</p>
+                        <p>Cristine dengan senyum teduh pembawa bahagia,</p>
+                        <p>Dan Daniel sang pelindung yang siap menjaga.</p>
+                        <br>
+                        <p>45 hari bukanlah sekadar masa pengabdian,</p>
+                        <p>Tetapi waktu di mana rasa ini bertumbuh perlahan.</p>
+                        <p>Dia dia dia... telah mencuri hati ini penuh kepastian,</p>
+                        <p>Mengubah kenangan KKN menjadi kisah abadi tanpa akhir masa.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Pantun -->
+            <div class="sastra-content" id="content-pantun">
+                <div class="pantun-grid">
+                    <div class="pantun-card">
+                        <div class="pantun-tag"><i class="fas fa-heart"></i> Pantun 1</div>
+                        <p>Pergi ke desa membawa papan,</p>
+                        <p>Menanam bunga di dekat kolam.</p>
+                        <p>Awalnya KKN cuma pengabdian,</p>
+                        <p>Kenapa rindu makin mendalam?</p>
+                    </div>
+
+                    <div class="pantun-card">
+                        <div class="pantun-tag"><i class="fas fa-heart"></i> Pantun 2</div>
+                        <p>Membeli kopi di warung Pak Mamat,</p>
+                        <p>Diminum hangat bersama teman.</p>
+
+                        <p>45 hari terasa sangat singkat,</p>
+                        <p>Sebab dekat Daniel hati selalu nyaman.</p>
+                    </div>
+
+                    <div class="pantun-card">
+                        <div class="pantun-tag"><i class="fas fa-heart"></i> Pantun 3</div>
+                        <p>Manis rasanya buah kueni,</p>
+                        <p>Dipetik sore di halaman warga.</p>
+                        <p>Cristine Natasia yang paling baik hati,</p>
+                        <p>Membuat masa KKN penuh bahagia.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Generator Kata-Kata -->
+            <div class="sastra-content" id="content-katakata">
+                <div class="words-generator-box">
+                    <i class="fas fa-comments words-icon"></i>
+                    <div id="dynamicWordDisplay" class="dynamic-word-text">
+                        "Setiap detik pengabdian di desa menjadi indah karena senyumanmu."
+                    </div>
+                    <button class="btn btn-primary" id="btnGenerateNewWord">
+                        <i class="fas fa-sync-alt"></i> Tampilkan Kata Romantis Lainnya
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Surprise Interactive Box -->
-    <section class="surprise-section section-padding bg-alt">
+    <section class="surprise-section section-padding">
         <div class="container text-center">
             <div class="section-header" data-aos="fade-up">
                 <span class="tagline">Sentuh Untuk Kejutan</span>
@@ -136,8 +221,8 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="section-padding">
+    <!-- Gallery Section (Desain Potret Tanpa Terpotong) -->
+    <section id="gallery" class="section-padding bg-alt">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <span class="tagline">Dokumentasi Momen</span>
@@ -152,12 +237,42 @@
             </div>
 
             <div class="gallery-grid">
-                <div class="gallery-item together" data-aos="zoom-in"><img src="img/berdua-1.jpg" alt="Berdua 1" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=500'"></div>
-                <div class="gallery-item together" data-aos="zoom-in"><img src="img/berdua-2.jpg" alt="Berdua 2" onerror="this.src='https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?w=500'"></div>
-                <div class="gallery-item cristine" data-aos="zoom-in"><img src="img/cristine-1.jpg" alt="Cristine 1" onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500'"></div>
-                <div class="gallery-item cristine" data-aos="zoom-in"><img src="img/cristine-2.jpg" alt="Cristine 2" onerror="this.src='https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500'"></div>
-                <div class="gallery-item daniel" data-aos="zoom-in"><img src="img/daniel-1.jpg" alt="Daniel 1" onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500'"></div>
-                <div class="gallery-item daniel" data-aos="zoom-in"><img src="img/daniel-2.jpg" alt="Daniel 2" onerror="this.src='https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=500'"></div>
+                <div class="gallery-item together" data-aos="zoom-in">
+                    <div class="portrait-box">
+                        <img src="img/berdua-1.jpg" alt="Berdua 1" onerror="this.src='img/berdua-1.jpeg'">
+                    </div>
+                    <div class="gallery-caption">Momen Berdua KKN</div>
+                </div>
+                <div class="gallery-item together" data-aos="zoom-in">
+                    <div class="portrait-box">
+                        <img src="img/berdua-2.jpg" alt="Berdua 2" onerror="this.src='img/berdua-2.jpeg'">
+                    </div>
+                    <div class="gallery-caption">Kebersamaan di Posko</div>
+                </div>
+                <div class="gallery-item cristine" data-aos="zoom-in">
+                    <div class="portrait-box">
+                        <img src="img/cristine-1.jpg" alt="Cristine 1" onerror="this.src='img/cristine-1.jpeg'">
+                    </div>
+                    <div class="gallery-caption">Cristine Natasia</div>
+                </div>
+                <div class="gallery-item cristine" data-aos="zoom-in">
+                    <div class="portrait-box">
+                        <img src="img/cristine-2.jpg" alt="Cristine 2" onerror="this.src='img/cristine-2.png'">
+                    </div>
+                    <div class="gallery-caption">Senyum Cristine</div>
+                </div>
+                <div class="gallery-item daniel" data-aos="zoom-in">
+                    <div class="portrait-box">
+                        <img src="img/daniel-1.jpg" alt="Daniel 1" onerror="this.src='img/daniel-1.jpeg'">
+                    </div>
+                    <div class="gallery-caption">HOT DANIEL</div>
+                </div>
+                <div class="gallery-item daniel" data-aos="zoom-in">
+                    <div class="portrait-box">
+                        <img src="img/daniel-2.jpg" alt="Daniel 2" onerror="this.src='img/daniel-2.jpeg'">
+                    </div>
+                    <div class="gallery-caption">Momen Daniel</div>
+                </div>
             </div>
         </div>
     </section>
@@ -171,7 +286,7 @@
                 <h3>Surat Rahasia KKN</h3>
                 <p>
                     "Dia dia dia telah mencuri hatiku..." <br><br>
-                    Untuk <strong>Cristine Natasia Sihaloho</strong> & <strong>HOT DANIEL PANJAITAN</strong>, semoga 45 hari KKN ini menjadi awal dari kisah manis yang terus berlanjut sepanjang masa.
+                    Untuk <strong>Cristine Natasia Sihaloho</strong> & <strong>HOT DANIEL PANJAITAN</strong>, semoga kenangan manis 45 hari KKN ini menjadi fondasi bahagia yang abadi selamanya!
                 </p>
             </div>
         </div>
