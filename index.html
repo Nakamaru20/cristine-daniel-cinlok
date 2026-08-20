@@ -2,7 +2,6 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <!-- Viewport dikunci agar tidak zoom/geser berlebih di HP namun tetap lancar di-scroll -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Kisah Cinta KKN | Cristine & Hot Daniel</title>
 
@@ -47,11 +46,8 @@
         </button>
     </div>
 
-    <!-- Audio Element (Pastikan menyimpan file mp3 lagu di folder atau ganti link audio) -->
-    <audio id="bgMusic" loop>
-        <source src="audio/dia-dia-dia.mp3" type="audio/mpeg">
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
-    </audio>
+    <!-- Audio Element (Terkunci khusus file lokal) -->
+    <audio id="bgMusic" src="audio/dia-dia-dia.mp3" loop></audio>
 
     <!-- Navigation Bar -->
     <nav class="navbar" id="navbar">
@@ -69,14 +65,14 @@
             <h1 class="main-title">Cristine & Hot Daniel</h1>
             <p class="typewriter-text" id="typewriter"></p>
 
-            <!-- Counter Box 45 Hari -->
+            <!-- Counter Box 45 Hari (Lengkap dengan angka jam/menit/detik aktif) -->
             <div class="counter-card" data-aos="fade-up">
                 <h3><i class="fas fa-heartbeat"></i> Kenangan 45 Hari KKN</h3>
                 <div id="timer" class="timer-grid">
                     <div class="timer-box"><span id="days">45</span><p>Hari</p></div>
-                    <div class="timer-box"><span id="hours">00</span><p>Jam</p></div>
-                    <div class="timer-box"><span id="minutes">00</span><p>Menit</p></div>
-                    <div class="timer-box"><span id="seconds">00</span><p>Detik</p></div>
+                    <div class="timer-box"><span id="hours">14</span><p>Jam</p></div>
+                    <div class="timer-box"><span id="minutes">28</span><p>Menit</p></div>
+                    <div class="timer-box"><span id="seconds">42</span><p>Detik</p></div>
                 </div>
             </div>
 
