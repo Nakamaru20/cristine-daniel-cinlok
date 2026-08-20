@@ -1,8 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* 1. Preloader & AOS Initialization */
+    /* ==========================================================================
+       1. PRELOADER & AOS INITIALIZATION
+       ========================================================================== */
     if (typeof AOS !== 'undefined') {
-        AOS.init({ duration: 800, once: true });
+        AOS.init({ 
+            duration: 800, 
+            once: true,
+            easing: 'ease-out-cubic'
+        });
     }
 
     window.addEventListener('load', () => {
@@ -13,7 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    /* 2. Sticky Navbar */
+    /* ==========================================================================
+       2. STICKY NAVBAR ON SCROLL
+       ========================================================================== */
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
         if (navbar) {
@@ -25,7 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    /* 3. Typewriter Effect */
+    /* ==========================================================================
+       3. TYPEWRITER EFFECT
+       ========================================================================== */
     const typewriter = document.getElementById('typewriter');
     const quotes = [
         '"Dia dia dia telah mencuri hatiku..."',
@@ -53,7 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     type();
 
-    /* 4. Live Timer 45 Hari KKN (Lengkap Jam, Menit, Detik Aktif) */
+    /* ==========================================================================
+       4. LIVE TIMER 45 HARI KKN (JAM, MENIT, DETIK TERUS BERJALAN)
+       ========================================================================== */
     let totalSeconds = 45 * 86400 + 14 * 3600 + 28 * 60 + 42;
     setInterval(() => {
         totalSeconds++;
@@ -73,7 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (secondsEl) secondsEl.textContent = s < 10 ? '0' + s : s;
     }, 1000);
 
-    /* 5. Pemutar Musik "Dia Dia Dia" & Equalizer */
+    /* ==========================================================================
+       5. PEMUTAR MUSIK "DIA DIA DIA" & EQUALIZER
+       ========================================================================== */
     const musicBtn = document.getElementById('musicToggle');
     const bgMusic = document.getElementById('bgMusic');
     const equalizer = document.getElementById('equalizer');
@@ -90,16 +104,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 bgMusic.play().then(() => {
                     musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
                     if (equalizer) equalizer.classList.remove('paused');
-                    showToast("🎵 Memutar: Dia Dia Dia - Fatin Shidqia");
+                    showToast("🎵 Dia Dia Dia - Fatin Shidqia");
                 }).catch(() => {
-                    showToast("Satu sentuhan lagi untuk memutar musik!");
+                    showToast("Sentuh sekali lagi untuk memutar musik!");
                 });
             }
             isPlaying = !isPlaying;
         });
     }
 
-    /* 6. Mode Glow / Theme Toggle */
+    /* ==========================================================================
+       6. MODE GLOW / THEME TOGGLE
+       ========================================================================== */
     const themeToggle = document.getElementById('themeToggle');
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
@@ -110,7 +126,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* 7. Tab Sastra (Puisi, Pantun, Kata-Kata) */
+    /* ==========================================================================
+       7. TAB SASTRA (PUISI, PANTUN, KATA-KATA)
+       ========================================================================== */
     const sastraTabs = document.querySelectorAll('.sastra-tab-btn');
     const sastraContents = document.querySelectorAll('.sastra-content');
 
@@ -128,7 +146,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* 8. Generator Kata-Kata Romantis Random */
+    /* ==========================================================================
+       8. GENERATOR KATA-KATA ROMANTIS RANDOM
+       ========================================================================== */
     const loveWordsList = [
         '"45 hari bersamamu di desa mengajarkan bahwa kebahagiaan itu sederhana."',
         '"Dia dia dia... sosok yang tak pernah kusangka akan menjadi tempat bersandar."',
@@ -153,7 +173,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* 9. Toast Utility */
+    /* ==========================================================================
+       9. TOAST UTILITY FUNCTION
+       ========================================================================== */
     function showToast(msg) {
         const toast = document.getElementById('toast');
         if (toast) {
@@ -163,7 +185,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /* 10. Interactive Buttons Hero */
+    /* ==========================================================================
+       10. HERO INTERACTIVE BUTTONS
+       ========================================================================== */
     const btnHeartBurst = document.getElementById('btnHeartBurst');
     if (btnHeartBurst) {
         btnHeartBurst.addEventListener('click', () => {
@@ -188,7 +212,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* 11. Interactive Surprise Box */
+    /* ==========================================================================
+       11. INTERACTIVE SURPRISE BOX
+       ========================================================================== */
     const surpriseCard = document.getElementById('surpriseCard');
     const surpriseText = document.getElementById('surpriseText');
     const surprises = [
@@ -204,7 +230,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* 12. Gallery Filter Function */
+    /* ==========================================================================
+       12. GALLERY FILTER FUNCTION
+       ========================================================================== */
     const filterButtons = document.querySelectorAll('.filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
 
@@ -224,7 +252,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* 13. Modal Controls */
+    /* ==========================================================================
+       13. MODAL CONTROLS
+       ========================================================================== */
     const secretModal = document.getElementById('secretModal');
     const openModalBtn = document.getElementById('openSecretModal');
     const closeModalBtn = document.getElementById('closeSecretModal');
@@ -239,14 +269,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === secretModal) secretModal.classList.remove('active');
     });
 
-    /* 14. Screen Touch/Click Particle Burst */
+    /* ==========================================================================
+       14. SCREEN TOUCH/CLICK PARTICLE BURST
+       ========================================================================== */
     window.addEventListener('click', (e) => {
-        if (!e.target.closest('button') && !e.target.closest('a')) {
+        if (!e.target.closest('button') && !e.target.closest('a') && !e.target.closest('.gallery-item')) {
             createTouchBurst(e.clientX, e.clientY);
         }
     });
 
-    /* 15. Canvas Particles Engine */
+    /* ==========================================================================
+       15. CANVAS PARTICLES ENGINE
+       ========================================================================== */
     const canvas = document.getElementById('particles-canvas');
     let parts = [];
 
