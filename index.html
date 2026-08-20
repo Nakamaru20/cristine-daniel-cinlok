@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="dark-glow">
 
     <!-- Preloader Screen -->
     <div id="preloader">
@@ -45,8 +45,8 @@
         <div class="equalizer paused" id="equalizer">
             <span></span><span></span><span></span><span></span>
         </div>
-        <button class="music-play-btn" id="musicToggle" aria-label="Play Music">
-            <i class="fas fa-play"></i>
+        <button class="music-play-btn" id="musicToggle" type="button" aria-label="Play Music">
+            <i class="fas fa-play" id="musicIcon"></i>
         </button>
     </div>
 
@@ -57,14 +57,16 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#hero" class="nav-brand">C <i class="fas fa-heart brand-heart"></i> D</a>
+            
             <ul class="nav-links">
                 <li><a href="#hero" class="nav-link">Beranda</a></li>
                 <li><a href="#couple" class="nav-link">Pasangan</a></li>
-                <li><a href="#sastra" class="nav-link">Sastra Cinta</a></li>
+                <li><a href="#sastra" class="nav-link">Sastra</a></li>
                 <li><a href="#gallery" class="nav-link">Galeri</a></li>
             </ul>
+
             <div class="nav-actions">
-                <button class="icon-btn" id="themeToggle" title="Mode Glowing"><i class="fas fa-moon"></i></button>
+                <button class="icon-btn" id="themeToggle" type="button" title="Ubah Mode"><i class="fas fa-sun"></i></button>
             </div>
         </div>
     </nav>
@@ -90,10 +92,10 @@
 
             <!-- Hero Action Buttons Grid -->
             <div class="hero-actions-grid" data-aos="fade-up" data-aos-delay="400">
-                <button class="btn btn-primary" id="btnHeartBurst"><i class="fas fa-heart"></i> Hujan Hati</button>
-                <button class="btn btn-secondary" id="btnFireworks"><i class="fas fa-fireworks"></i> Kembang Api</button>
-                <button class="btn btn-accent" id="btnLoveQuote"><i class="fas fa-comment-dots"></i> Acak Kata</button>
-                <button class="btn btn-outline" id="openSecretModal"><i class="fas fa-envelope-open-text"></i> Surat KKN</button>
+                <button class="btn btn-primary" id="btnHeartBurst" type="button"><i class="fas fa-heart"></i> Hujan Hati</button>
+                <button class="btn btn-secondary" id="btnFireworks" type="button"><i class="fas fa-fireworks"></i> Kembang Api</button>
+                <button class="btn btn-accent" id="btnLoveQuote" type="button"><i class="fas fa-comment-dots"></i> Acak Kata</button>
+                <button class="btn btn-outline" id="openSecretModal" type="button"><i class="fas fa-envelope-open-text"></i> Surat KKN</button>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -149,9 +151,9 @@
 
             <!-- Tab Buttons -->
             <div class="tab-sastra-buttons" data-aos="fade-up">
-                <button class="sastra-tab-btn active" data-sastra="puisi"><i class="fas fa-feather-alt"></i> Puisi Cinta</button>
-                <button class="sastra-tab-btn" data-sastra="pantun"><i class="fas fa-scroll"></i> Pantun KKN</button>
-                <button class="sastra-tab-btn" data-sastra="katakata"><i class="fas fa-quote-right"></i> Ribuan Kata Cinta</button>
+                <button class="sastra-tab-btn active" data-sastra="puisi" type="button"><i class="fas fa-feather-alt"></i> Puisi Cinta</button>
+                <button class="sastra-tab-btn" data-sastra="pantun" type="button"><i class="fas fa-scroll"></i> Pantun KKN</button>
+                <button class="sastra-tab-btn" data-sastra="katakata" type="button"><i class="fas fa-quote-right"></i> Kata Cinta</button>
             </div>
 
             <!-- Content Puisi -->
@@ -209,7 +211,7 @@
                     <div id="dynamicWordDisplay" class="dynamic-word-text">
                         "Setiap detik pengabdian di desa menjadi indah karena senyumanmu."
                     </div>
-                    <button class="btn btn-primary" id="btnGenerateNewWord">
+                    <button class="btn btn-primary btn-generate" id="btnGenerateNewWord" type="button">
                         <i class="fas fa-sync-alt"></i> Tampilkan Kata Romantis Lainnya
                     </button>
                 </div>
@@ -231,7 +233,7 @@
         </div>
     </section>
 
-    <!-- Gallery Section (Desain Potret Tanpa Terpotong) -->
+    <!-- Gallery Section Modern Portrait -->
     <section id="gallery" class="section-padding bg-alt">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
@@ -241,10 +243,10 @@
 
             <!-- Filter Buttons -->
             <div class="filter-buttons" data-aos="fade-up">
-                <button class="filter-btn active" data-filter="all">Semua</button>
-                <button class="filter-btn" data-filter="together">Berdua</button>
-                <button class="filter-btn" data-filter="cristine">Cristine</button>
-                <button class="filter-btn" data-filter="daniel">Daniel</button>
+                <button class="filter-btn active" data-filter="all" type="button">Semua</button>
+                <button class="filter-btn" data-filter="together" type="button">Berdua</button>
+                <button class="filter-btn" data-filter="cristine" type="button">Cristine</button>
+                <button class="filter-btn" data-filter="daniel" type="button">Daniel</button>
             </div>
 
             <!-- Gallery Grid Modern Portrait -->
@@ -293,7 +295,7 @@
     <div class="modal" id="secretModal">
         <div class="modal-dialog">
             <div class="modal-content">
-                <button class="close-modal" id="closeSecretModal">&times;</button>
+                <button class="close-modal" id="closeSecretModal" type="button">&times;</button>
                 <i class="fas fa-envelope-open-text modal-icon"></i>
                 <h3 class="modal-title">Surat Rahasia KKN</h3>
                 <p class="modal-body-text">
