@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ==========================================================================
-       1. PRELOADER & AOS ANIMATION
+       1. PRELOADER & AOS ANIMATION INITIALIZATION
        ========================================================================== */
     if (typeof AOS !== 'undefined') {
         AOS.init({ 
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
 
     /* ==========================================================================
-       5. PEMUTAR MUSIK "DIA DIA DIA" & EQUALIZER
+       5. PEMUTAR MUSIK "DIA DIA DIA" & EQUALIZER (AUTOPLAY BROWSER FIXED)
        ========================================================================== */
     const musicBtn = document.getElementById('musicToggle');
     const musicIcon = document.getElementById('musicIcon');
@@ -94,24 +94,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const equalizer = document.getElementById('equalizer');
     let isPlaying = false;
 
+    // Preload file audio di memori
+    if (bgMusic) {
+        bgMusic.load();
+    }
+
+    // Pemicu Pemutaran Musik Otomatis pada Sentuhan Pertama Pengguna
+    const playOnFirstInteraction = () => {
+        if (bgMusic && bgMusic.paused && !isPlaying) {
+            bgMusic.play().then(() => {
+                isPlaying = true;
+                if (musicIcon) musicIcon.className = 'fas fa-pause';
+                if (equalizer) equalizer.classList.remove('paused');
+                showToast("🎵 Dia Dia Dia - Fatin Shidqia");
+            }).catch((err) => {
+                console.log("Menunggu aksi manual dari tombol:", err);
+            });
+        }
+        window.removeEventListener('click', playOnFirstInteraction);
+        window.removeEventListener('touchstart', playOnFirstInteraction);
+    };
+
+    window.addEventListener('click', playOnFirstInteraction, { once: true });
+    window.addEventListener('touchstart', playOnFirstInteraction, { once: true });
+
+    // Tombol Manual Toggle Musik
     if (musicBtn && bgMusic) {
-        musicBtn.addEventListener('click', () => {
+        musicBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+
             if (isPlaying) {
                 bgMusic.pause();
                 if (musicIcon) musicIcon.className = 'fas fa-play';
                 if (equalizer) equalizer.classList.add('paused');
                 showToast("Musik Dihentikan");
+                isPlaying = false;
             } else {
                 bgMusic.play().then(() => {
                     if (musicIcon) musicIcon.className = 'fas fa-pause';
                     if (equalizer) equalizer.classList.remove('paused');
                     showToast("🎵 Dia Dia Dia - Fatin Shidqia");
+                    isPlaying = true;
                 }).catch((err) => {
-                    console.log("Autoplay error:", err);
-                    showToast("Pastikan file audio/dia-dia-dia.mp3 sudah di-upload!");
+                    alert("Gagal memutar lagu! Pastikan file 'dia-dia-dia.mp3' ada di dalam folder 'audio'.");
                 });
             }
-            isPlaying = !isPlaying;
         });
     }
 
