@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ==========================================================================
-       1. PRELOADER & AOS INITIALIZATION
+       1. PRELOADER & AOS ANIMATION
        ========================================================================== */
     if (typeof AOS !== 'undefined') {
         AOS.init({ 
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     type();
 
     /* ==========================================================================
-       4. LIVE TIMER 45 HARI KKN (JAM, MENIT, DETIK TERUS BERJALAN)
+       4. LIVE TIMER 45 HARI KKN (JAM, MENIT, DETIK AKTIF BERJALAN)
        ========================================================================== */
     let totalSeconds = 45 * 86400 + 14 * 3600 + 28 * 60 + 42;
     setInterval(() => {
@@ -89,6 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
        5. PEMUTAR MUSIK "DIA DIA DIA" & EQUALIZER
        ========================================================================== */
     const musicBtn = document.getElementById('musicToggle');
+    const musicIcon = document.getElementById('musicIcon');
     const bgMusic = document.getElementById('bgMusic');
     const equalizer = document.getElementById('equalizer');
     let isPlaying = false;
@@ -97,16 +98,17 @@ document.addEventListener('DOMContentLoaded', () => {
         musicBtn.addEventListener('click', () => {
             if (isPlaying) {
                 bgMusic.pause();
-                musicBtn.innerHTML = '<i class="fas fa-play"></i>';
+                if (musicIcon) musicIcon.className = 'fas fa-play';
                 if (equalizer) equalizer.classList.add('paused');
                 showToast("Musik Dihentikan");
             } else {
                 bgMusic.play().then(() => {
-                    musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    if (musicIcon) musicIcon.className = 'fas fa-pause';
                     if (equalizer) equalizer.classList.remove('paused');
                     showToast("🎵 Dia Dia Dia - Fatin Shidqia");
-                }).catch(() => {
-                    showToast("Sentuh sekali lagi untuk memutar musik!");
+                }).catch((err) => {
+                    console.log("Autoplay error:", err);
+                    showToast("Pastikan file audio/dia-dia-dia.mp3 sudah di-upload!");
                 });
             }
             isPlaying = !isPlaying;
@@ -114,15 +116,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       6. MODE GLOW / THEME TOGGLE
+       6. MODE DARK GLOW / LIGHT THEME TOGGLE
        ========================================================================== */
     const themeToggle = document.getElementById('themeToggle');
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-glow');
-            const isDark = document.body.classList.contains('dark-glow');
-            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-            showToast(isDark ? "Mode Night Glow Aktif ✨" : "Mode Terang Aktif ☀️");
+            document.body.classList.toggle('light-theme');
+            const isLight = document.body.classList.contains('light-theme');
+            themeToggle.innerHTML = isLight ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+            showToast(isLight ? "Mode Terang Aktif ☀️" : "Mode Night Glow Aktif ✨");
         });
     }
 
@@ -162,7 +164,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const dynamicWordDisplay = document.getElementById('dynamicWordDisplay');
 
     if (btnGenerateNewWord && dynamicWordDisplay) {
-        btnGenerateNewWord.addEventListener('click', () => {
+        btnGenerateNewWord.addEventListener('click', (e) => {
+            e.preventDefault();
             const randomIndex = Math.floor(Math.random() * loveWordsList.length);
             dynamicWordDisplay.style.opacity = '0';
             setTimeout(() => {
