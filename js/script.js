@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
 
     /* ==========================================================================
-       5. PEMUTAR MUSIK "DIA DIA DIA" (PATH FOLDER UTAMA)
+       5. PEMUTAR MUSIK "DIA DIA DIA" (MENGAKSES BERKAS DI FOLDER UTAMA)
        ========================================================================== */
     const musicBtn = document.getElementById('musicToggle');
     const musicIcon = document.getElementById('musicIcon');
@@ -95,10 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let isPlaying = false;
 
     if (bgMusic) {
-        bgMusic.load(); // Paksa browser memuat berkas dia-dia-dia.mp3 dari folder utama
+        bgMusic.load(); // Memuat dia-dia-dia.mp3 dari folder utama
     }
 
-    // Solusi Autoplay Browser: Putar lagu saat pengguna pertama kali menyentuh/mengklik layar
+    // Pemicu Pemutaran Musik Otomatis pada Sentuhan Pertama Pengguna
     const playMusicFirstTouch = () => {
         if (bgMusic && bgMusic.paused && !isPlaying) {
             bgMusic.play().then(() => {
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     showToast("🎵 Dia Dia Dia - Fatin Shidqia");
                     isPlaying = true;
                 }).catch((err) => {
-                    alert("Gagal memutar audio! Pastikan berkas 'dia-dia-dia.mp3' berada di folder utama (sejajar dengan index.html) dan ukurannya tidak 0 KB.");
+                    alert("Gagal memutar lagu! Pastikan file 'dia-dia-dia.mp3' sudah di-upload ke folder utama (sejajar dengan index.html) dan ukurannya tidak 0 KB.");
                 });
             }
         });
